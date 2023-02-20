@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-//const notes = require("./public/notes");
+
 let db = require("./db/db.json");
 const uuid = require("./public/assets/js/uuid");
 
@@ -37,12 +37,9 @@ app.post("/api/notes", (req, res) => {
     const newNote = {
       title,
       text,
-      review_id: uuid(),
+      id: uuid(),
     };
 
-    //const noteString=JSON.stringify(newNote);
-
-    //fs.writeFile(`./db/`)
     fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) {
         console.error(err);
@@ -62,6 +59,32 @@ app.post("/api/notes", (req, res) => {
     res.status(500).json("Please enter a title and note");
   }
 });
+
+//for future development
+
+// app.delete("/api/notes", (req, res) => {
+//   res.json(`${req.method} request received to a note`);
+//   const { id } = req.params;
+
+//     fs.readFile("./db/db.json", "utf8", (err, data) => {
+//       if (err) {
+//         console.error(err);
+//       } else {
+//         db = JSON.parse(data);
+//         db.push(newNote);
+
+//         fs.writeFile("./db/db.json", JSON.stringify(db), (writeErr) =>
+//           writeErr
+//             ? console.error(writeErr)
+//             : console.info("Your note has been added")
+//         );
+//         res.json(newNote);
+//       }
+//     });
+//   } else {
+//     res.status(500).json("Please enter a title and note");
+//   }
+// });
 
 app.listen(PORT, () =>
   console.log(`Express server listening on port ${PORT}!`)
