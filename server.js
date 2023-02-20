@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 //const notes = require("./public/notes");
-const db = require("./db/db.json");
+let db = require("./db/db.json");
 const uuid = require("./public/assets/js/uuid");
 
 const app = express();
@@ -39,22 +39,27 @@ app.post("/api/notes", (req, res) => {
       text,
       review_id: uuid(),
     };
+
+    //const noteString=JSON.stringify(newNote);
+
+    //fs.writeFile(`./db/`)
     fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) {
         console.error(err);
       } else {
-        const parsedNotes = JSON.parse(data);
-        parsedNotes.push(newNote);
-        fs.writeFile(
-          "./db/db.json",
-          JSON.stringify(parsedNotes, null, 4),
-          (writeErr) =>
-            writeErr
-              ? console.error(writeErr)
-              : console.info("Successfully updated notes!")
+        db = JSON.parse(data);
+        db.push(newNote);
+
+        fs.writeFile("./db/db.json", JSON.stringify(db), (writeErr) =>
+          writeErr
+            ? console.error(writeErr)
+            : console.info("Your note has been added")
         );
+        res.json(newNote);
       }
     });
+  } else {
+    res.status(500).json("Please enter a title and note");
   }
 });
 
