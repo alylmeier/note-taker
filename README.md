@@ -1,5 +1,4 @@
 # Note Taker Application
-# Team Page Generator 
 
 ## Description
 This is an app to take notes on daily tasks
@@ -19,6 +18,9 @@ This project is intended to be used for anyone to remind themselves of their to-
 
 ## Deployed App
 https://immense-sands-36851.herokuapp.com/notes
+
+# Screenshot
+![generatormockup](https://github.com/alylmeier/weather-dashboard/blob/main/assets/Screenshot%202023-01-20%20164328.png)
 
 
 
