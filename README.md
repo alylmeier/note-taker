@@ -20,7 +20,7 @@ This project is intended to be used for anyone to remind themselves of their to-
 https://immense-sands-36851.herokuapp.com/notes
 
 # Screenshot
-![generatormockup](https://github.com/alylmeier/weather-dashboard/blob/main/assets/Screenshot%202023-01-20%20164328.png)
+![generatormockup](https://github.com/alylmeier/note-taker/blob/main/public/note%20taker%20ss.png)
 
 
 
